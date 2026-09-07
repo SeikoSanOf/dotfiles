@@ -1,0 +1,18 @@
+# 1. Cloner le bare repo dans le HOME
+git clone --bare git@github.com:SeikoSanOf/dotfiles.git $HOME/.dotfiles
+
+# 2. Définir l'alias temporaire
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# 3. Extraire tous les fichiers dans le dossier personnel
+dotfiles checkout -f
+dotfiles config --local status.showUntrackedFiles no
+
+# 4. Réinstaller tous les paquets officiels
+sudo pacman -S --needed - < ~/.config/pkglist-native.txt
+
+# 5. Réinstaller tous les paquets AUR (après installation de yay)
+yay -S --needed - < ~/.config/pkglist-aur.txt
+
+# 6. Rétablir le hook Pacman automatique
+sudo cp ~/.config/pacman-hooks/pkglist.hook /etc/pacman.d/hooks/
