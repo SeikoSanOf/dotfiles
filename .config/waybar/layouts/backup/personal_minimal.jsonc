@@ -1,0 +1,26 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "modules-right": [
+        "group/hardware", // Utilisation d'un groupe dédié
+        "clock"
+    ],
+
+    // Définition du layout du groupe hardware
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "memory",
+            "disk"
+        ],
+        "drawer": { // Effet tiroir (se déroule au survol)
+            "transition-duration": 500,
+            "transition-left-to-right": false
+        }
+    },
+
+    "cpu": { "format": " {usage}%" },
+    "memory": { "format": " {percentage}%" },
+    "disk": { "format": "💾 {percentage_used}%" }
+}
