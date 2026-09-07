@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Mise à jour des listes de paquets (natifs et AUR)...
+When = PostTransaction
+Exec = /bin/sh -c 'pacman -Qnqe > /home/user/.config/pkglist-native.txt && pacman -Qmqe > /home/user/.config/pkglist-aur.txt && chown user:user /home/user/.config/pkglist-*.txt'
