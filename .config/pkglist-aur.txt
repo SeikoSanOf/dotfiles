@@ -1,0 +1,5 @@
+pamac-aur
+sunshine-bin
+unimatrix-git
+vscodium-bin
+yay-bin
